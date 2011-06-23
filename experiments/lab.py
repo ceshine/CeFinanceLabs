@@ -15,6 +15,7 @@ def main():
     parser.add_argument('-m', '--mode', metavar='mode', choices=('period', 'point'), default='point', help='The way to determine if a condition has been met')
     parser.add_argument('-s', '--start', metavar='startdate', default='1998-1-1', help='The start date')
     parser.add_argument('-e', '--end', metavar='enddate', default='2011-6-17', help='The end date')
+    parser.add_argument('--due', metavar='duedays', type=int, default='50', help='Days left to due date')
     
     args = parser.parse_args()
     print args
@@ -23,7 +24,7 @@ def main():
     startdate = date(year, month, day)
     year, month, day = map(int, args.end.split('-'))
     enddate = date(year, month, day)
-    lab = test(startdate, enddate)
+    lab = test(startdate, enddate, args.due)
     
     
     

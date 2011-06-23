@@ -4,11 +4,10 @@ import os
 from datetime import date
 
 class test(object):
-    TRADE_DAYS = 50
-    def __init__(self, startdate, enddate):
+    def __init__(self, startdate, enddate, due):
         self.FROM = startdate
         self.TO = enddate
-    
+        self.TRADE_DAYS = due
     
     def slice_by_time(self, data):
         start, end = -1, 0
@@ -32,7 +31,7 @@ class test(object):
                 count += 1
         return count, float(count)/len(hit)
     
-    def percent(self, data, ratio, mode='period'):
+    def hitbypercent(self, data, ratio, mode='period'):
         data = self.slice_by_time(data)
         
         hit = []       
